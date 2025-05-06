@@ -188,9 +188,9 @@ See [Releases page](https://github.com/jser/mcp/releases).
 
 ## Running tests
 
-Install devDependencies and Run `npm test`:
+Install devDependencies and Run `pnpm test`:
 
-    npm test
+    pnpm test
 
 ## Contributing
 
