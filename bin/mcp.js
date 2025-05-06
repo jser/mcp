@@ -1,7 +1,17 @@
 #!/usr/bin/env node
 
-import "../lib/index.js";
+import { runServer } from "../lib/index.js";
 
+// サーバー起動
+const { cleanup } = await runServer().catch((err) => {
+    console.error("Error setting up server:", err);
+    process.exit(1);
+});
+process.on("SIGINT", async () => {
+    console.log("Shutting down server...");
+    await cleanup();
+    process.exit(0);
+});
 // Display startup message
 console.log("🚀 @jser/mcp サーバーを起動しています...");
 console.log("接続方法:");

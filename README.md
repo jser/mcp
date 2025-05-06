@@ -110,7 +110,7 @@ return JSerItem match the `URL`.
 
 - Tool Name: `search_items`
   - Title: Search items by title, description, url, and tags
-  - Description: Search items by title, description, url, and tags
+  - Description: Search items by title, description, url, and tags.スペースで区切られた複数のキーワードをOR検索します。
   - Parameters:
     - `query`: Search query
     - `limit`: Number of results to return (default: 10)
