@@ -1,0 +1,59 @@
+{
+  "name": "@jser/mcp",
+  "version": "1.0.0",
+  "description": "A MCP Server for JSer.info",
+  "keywords": [
+    "jser",
+    "mcp"
+  ],
+  "homepage": "https://github.com/jser/mcp",
+  "bugs": {
+    "url": "https://github.com/jser/mcp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jser/mcp.git"
+  },
+  "license": "MIT",
+  "author": "azu",
+  "main": "lib/mcp.js",
+  "types": "lib/mcp.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "tsc -p .",
+    "prepare": "git config --local core.hooksPath .githooks",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "tsc -p . --watch",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.11",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "lint-staged": "^15.5.1"
+  },
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39",
+  "publishConfig": {
+    "access": "public"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "printWidth": 120,
+    "tabWidth": 4,
+    "trailingComma": "none"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "prettier --write"
+    ]
+  }
+}
