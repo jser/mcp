@@ -229,7 +229,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
 
     mcpServer.tool(
         "jser_product_name",
-        "URLから製品名を取得します",
+        "URLからプロダクト名を取得します",
         {
             url: z.string().url().describe("製品のURL")
         },
@@ -239,17 +239,17 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
 
                 if (!response.ok) {
                     if (response.status === 400) {
-                        // APIが400を返す場合、製品名が見つからないことを示す
+                        // APIが400を返す場合、プロダクト名が見つからないことを示す
                         return {
                             content: [
                                 {
                                     type: "text",
-                                    text: "製品名が見つかりませんでした"
+                                    text: "プロダクト名が見つかりませんでした"
                                 }
                             ]
                         };
                     }
-                    throw new Error(`製品名APIエラー: ${response.statusText}`);
+                    throw new Error(`プロダクト名APIエラー: ${response.statusText}`);
                 }
 
                 const result = await response.json();
@@ -262,12 +262,12 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
                     ]
                 };
             } catch (error) {
-                console.error("製品名取得中にエラーが発生しました:", error);
+                console.error("プロダクト名取得中にエラーが発生しました:", error);
                 return {
                     content: [
                         {
                             type: "text",
-                            text: `製品名取得中にエラーが発生しました: ${String(error)}`
+                            text: `プロダクト名取得中にエラーが発生しました: ${String(error)}`
                         }
                     ],
                     isError: true
@@ -460,7 +460,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "jser_item_with_url",
+        "jser_item_with_item_url",
         "URLからJSerアイテムを取得します",
         {
             url: z.string().url().describe("アイテムのURL")

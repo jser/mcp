@@ -52,12 +52,12 @@ VSCodeのsettings.jsonに以下の設定を追加します：
 接続後、以下のツールが利用可能になります：
    - `jser_search_items`: タイトル、説明、URL、タグでアイテムを検索（複数キーワードでOR検索可能）
    - `jser_search_posts`: タイトル、説明、URL、タグで投稿を検索
-   - `jser_product_name`: URLから製品名を取得
+   - `jser_product_name`: URLからプロダクト名を取得
    - `jser_week`: 番号からJSer週を取得
    - `jser_weeks`: 全てのJSer週を取得
    - `jser_weeks_between`: 二つの日付の間のJSer週を取得
    - `jser_week_with_item_url`: アイテムを含むJSer週を取得
-   - `jser_item_with_url`: URLからJSerアイテムを取得
+   - `jser_item_with_item_url`: URLからJSerアイテムを取得
 
 ### 利用できるtool
 
@@ -110,14 +110,14 @@ JSer.info MCPでは、次の tool が利用できます。
 
 #### jser_product_name
 
-URLから製品名を取得します。
+URLからプロダクト名を取得します。
 
 パラメータ:
 - `url`: 製品のURL（必須）
 
 返り値:
 - 製品情報のオブジェクト
-  - `name`: 製品名
+  - `name`: プロダクト名
   - `url`: 製品のURL
   - `releaseNoteProbability`: リリースノートである確率
   - `releaseNoteVersion`: リリースノートのバージョン情報（該当する場合）
@@ -183,7 +183,7 @@ URLから製品名を取得します。
   - `items`: その週のアイテムリスト
   - `posts`: その週の投稿リスト
 
-#### jser_item_with_url
+#### jser_item_with_item_url
 
 指定したURLのアイテムを取得します。
 

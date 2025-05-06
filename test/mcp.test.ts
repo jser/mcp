@@ -379,7 +379,7 @@ describe("JSer.info MCP Server", () => {
         try {
             const client = await createConnection(url);
             const response = await client.callTool({
-                name: "jser_item_with_url",
+                name: "jser_item_with_item_url",
                 arguments: {
                     url: "https://efendibooks.com/minibooks/testing-with-coffeescript"
                 }
