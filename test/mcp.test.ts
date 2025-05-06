@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { createJSerInfoMcpServer } from "../src/mcp.js";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
-import { runServer } from "../src/index.js";
+import { runServer } from "../src/node.js";
 import mockItems from "./fixtures/items.json" with { type: "json" };
 import mockPosts from "./fixtures/posts.json" with { type: "json" };
 import type { JserItem, JserPost } from "@jser/data-fetcher";

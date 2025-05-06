@@ -37,12 +37,17 @@
     "prepublishOnly": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "start": "node lib/index.js",
-    "dev": "tsc -p . && node lib/index.js",
     "watch": "tsc -p . --watch",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "lint:fix": "biome lint --fix",
+    "start": "wrangler dev",
+    "cf-typegen": "wrangler types"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250506.0",
+    "wrangler": "^4.14.1",
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.12",
     "lint-staged": "^15.5.1",
@@ -66,6 +71,7 @@
     ]
   },
   "dependencies": {
+    "agents": "^0.0.65",
     "@jser/data-fetcher": "^2.0.1",
     "@jser/stat": "^2.0.1",
     "@modelcontextprotocol/sdk": "^1.11.0",

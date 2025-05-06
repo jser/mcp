@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { runServer } from "../lib/index.js";
+import { runServer } from "../lib/node.js";
 
 // サーバー起動
 const { cleanup } = await runServer().catch((err) => {
