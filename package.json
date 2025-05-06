@@ -36,6 +36,7 @@
     "prepare": "git config --local core.hooksPath .githooks",
     "prepublishOnly": "npm run build",
     "test": "vitest run",
+    "updateSnapshots": "vitest -u",
     "test:watch": "vitest",
     "watch": "tsc -p . --watch",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",

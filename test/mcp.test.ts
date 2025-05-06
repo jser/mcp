@@ -59,16 +59,27 @@ describe("JSer.info MCP Server", () => {
                   {
                     "text": "[
                 {
-                  "title": "Integrating JavaScript Unit Tests with Visual Studio",
-                  "url": "http://stephenwalther.com/blog/archive/2010/12/20/integrating-javascript-unit-tests-with-visual-studio.aspx",
-                  "content": "Visual StudioでJavaScriptのUnit Testを行う方法",
-                  "date": "2011-01-08T04:20:00.000Z"
+                  "date": "2025-04-17T23:42:28.759Z",
+                  "title": "Release v1.52.0 · microsoft/playwright",
+                  "url": "https://github.com/microsoft/playwright/releases/tag/v1.52.0",
+                  "content": "playwright v1.52.0リリース。\\n破壊的な変更として\`page.route()\`で\`?\`はwildcardとして扱わないように変更、\`route.continue()\`で\`Cookie\`ヘッダを上書きできないように変更。\\n\`expect(locator).toContainClass()\`の追加、Aria Snapshotの更新。\\nプロジェクトごとに\`workers\`を設定できるように、\`failOnFlakyTests\`オプションの追加。\\n",
+                  "tags": [
+                    "playwright",
+                    "ReleaseNote"
+                  ],
+                  "relatedLinks": []
                 },
                 {
-                  "title": "jsのオレオレ演算子 - latest log",
-                  "url": "http://d.hatena.ne.jp/uupaa/20110123/1295721414",
-                  "content": "JavaScriptで演算子の組み合わせやビット演算などで短く書く方法。\\n\`-~n\`とかゴルフでよく見かける。\\n-[forked from: forked from: jsのオレオレ演算子 - jsdo.it - Share JavaScript, HTML5 and CSS](http://jsdo.it/monjudoh/rC57 \\"forked from: forked from: jsのオレオレ演算子 - jsdo.it - Share JavaScript, HTML5 and CSS\\")",
-                  "date": "2011-01-09T07:32:00.000Z"
+                  "date": "2025-04-12T13:51:05.160Z",
+                  "title": "goldbergyoni/nodejs-testing-best-practices: Beyond the basics of Node.js testing. Including a super-comprehensive best practices list and an example app (April 2025)",
+                  "url": "https://github.com/goldbergyoni/nodejs-testing-best-practices",
+                  "content": "Node.jsでのテストについてのドキュメント",
+                  "tags": [
+                    "nodejs",
+                    "test",
+                    "document"
+                  ],
+                  "relatedLinks": []
                 }
               ]",
                     "type": "text",

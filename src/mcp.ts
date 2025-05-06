@@ -16,7 +16,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
      * JSer.info MCP Server
      * Model Context Protocol サーバー for JSer.info
      */
-    const mcpServer = new McpServer({ name: "jser-info-server", version: "1.0.0" });
+    const mcpServer = new McpServer({ name: "jser-info-mcp", version: "1.0.0" });
 
     // データキャッシュ管理
     // キャッシュの有効期限：1分
@@ -78,13 +78,30 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
         "jser_search_items",
         "タイトル、説明、URL、タグでアイテムを検索します。スペースで区切られた複数のキーワードをOR検索します",
         {
-            query: z.string().describe("検索クエリ。スペースで区切られた複数のキーワードをOR検索します"),
-            limit: z.number().default(10).describe("返す結果の最大数 (デフォルト: 10)"),
-            offset: z.number().default(0).describe("結果のオフセット (デフォルト: 0)"),
-            sort: z.string().default("relevance").describe('ソート順 (デフォルト: "relevance")'),
-            order: z.string().default("desc").describe('ソート順序 (デフォルト: "desc")')
+            query: z
+                .string()
+                .min(1, "検索クエリは1文字以上である必要があります")
+                .max(100, "検索クエリは100文字以下である必要があります")
+                .describe("検索クエリ。スペースで区切られた複数のキーワードをOR検索します"),
+            limit: z
+                .number()
+                .int("limitは整数である必要があります")
+                .min(1, "limitは1以上である必要があります")
+                .max(100, "limitは100以下である必要があります")
+                .default(10)
+                .describe("返す結果の最大数 (デフォルト: 10, 最大: 100)"),
+            offset: z
+                .number()
+                .int("offsetは整数である必要があります")
+                .min(0, "offsetは0以上である必要があります")
+                .default(0)
+                .describe("結果のオフセット (デフォルト: 0)"),
+            order: z
+                .enum(["desc", "asc"])
+                .default("desc")
+                .describe("ソート順序：desc - 新しい順（デフォルト）、asc - 古い順")
         },
-        async ({ query, limit, offset, sort, order }) => {
+        async ({ query, limit, offset, order }) => {
             try {
                 // TODO: 実際の検索ロジックの実装
                 // 現在は簡易的な実装としてキーワードマッチングのみを行う
@@ -98,15 +115,12 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
                     return queryWords.some((word) => searchText.includes(word));
                 });
 
-                // ソート処理
-                let sortedItems = [...filteredItems];
-                if (sort === "date") {
-                    sortedItems.sort((a, b) => {
-                        const dateA = new Date(a.date).getTime();
-                        const dateB = new Date(b.date).getTime();
-                        return order === "asc" ? dateA - dateB : dateB - dateA;
-                    });
-                }
+                // 常に日付でソートする
+                const sortedItems = [...filteredItems].sort((a, b) => {
+                    const dateA = new Date(a.date).getTime();
+                    const dateB = new Date(b.date).getTime();
+                    return order === "asc" ? dateA - dateB : dateB - dateA;
+                });
 
                 // 結果の制限とオフセット
                 const result = sortedItems.slice(offset, offset + limit);
@@ -137,11 +151,32 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
         "jser_search_posts",
         "タイトル、説明、URL、タグで投稿を検索します",
         {
-            query: z.string().describe("検索クエリ"),
-            limit: z.number().default(10).describe("返す結果の最大数 (デフォルト: 10)"),
-            offset: z.number().default(0).describe("結果のオフセット (デフォルト: 0)"),
-            sort: z.string().default("relevance").describe('ソート順 (デフォルト: "relevance")'),
-            order: z.string().default("desc").describe('ソート順序 (デフォルト: "desc")')
+            query: z
+                .string()
+                .min(1, "検索クエリは1文字以上である必要があります")
+                .max(100, "検索クエリは100文字以下である必要があります")
+                .describe("検索クエリ"),
+            limit: z
+                .number()
+                .int("limitは整数である必要があります")
+                .min(1, "limitは1以上である必要があります")
+                .max(100, "limitは100以下である必要があります")
+                .default(10)
+                .describe("返す結果の最大数 (デフォルト: 10, 最大: 100)"),
+            offset: z
+                .number()
+                .int("offsetは整数である必要があります")
+                .min(0, "offsetは0以上である必要があります")
+                .default(0)
+                .describe("結果のオフセット (デフォルト: 0)"),
+            sort: z
+                .enum(["relevance", "date"])
+                .default("relevance")
+                .describe("ソート順：relevance - 関連度順（デフォルト）、date - 日付順"),
+            order: z
+                .enum(["desc", "asc"])
+                .default("desc")
+                .describe("ソート順序：desc - 新しい順/関連度高順（デフォルト）、asc - 古い順/関連度低順")
         },
         async ({ query, limit, offset, sort, order }) => {
             try {
@@ -164,6 +199,8 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
                         return order === "asc" ? dateA - dateB : dateB - dateA;
                     });
                 }
+                // relevanceの場合は検索クエリとの一致度でソート（将来的な実装）
+                // 現在は検索結果の順序をそのまま使用
 
                 // 結果の制限とオフセット
                 const result = sortedPosts.slice(offset, offset + limit);
