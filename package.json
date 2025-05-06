@@ -43,7 +43,8 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
   },
   "devDependencies": {
-    "@types/node": "^22.15.11",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.12",
     "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
@@ -65,9 +66,10 @@
     ]
   },
   "dependencies": {
-    "@jser/data-fetcher": "^2.0.0",
-    "@jser/stat": "^2.0.0",
+    "@jser/data-fetcher": "^2.0.1",
+    "@jser/stat": "^2.0.1",
     "@modelcontextprotocol/sdk": "^1.11.0",
+    "express": "^5.1.0",
     "zod": "^3.24.4"
   }
 }

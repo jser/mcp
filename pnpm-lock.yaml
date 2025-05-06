@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@jser/data-fetcher':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.0.1
+        version: 2.0.1
       '@jser/stat':
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.0.1
+        version: 2.0.1
       '@modelcontextprotocol/sdk':
         specifier: ^1.11.0
         version: 1.11.0
@@ -28,8 +28,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1
       '@types/node':
-        specifier: ^22.15.11
-        version: 22.15.11
+        specifier: ^22.15.12
+        version: 22.15.12
       lint-staged:
         specifier: ^15.5.1
         version: 15.5.1
@@ -41,7 +41,7 @@ importers:
         version: 5.8.3
       vitest:
         specifier: ^3.1.3
-        version: 3.1.3(@types/node@22.15.11)(yaml@2.7.1)
+        version: 3.1.3(@types/node@22.15.12)(yaml@2.7.1)
 
 packages:
 
@@ -198,11 +198,11 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@jser/data-fetcher@2.0.0':
-    resolution: {integrity: sha512-cSKozV4JaLkEHlqj2M4r6F3FLGK45+SC8xahTK7RzCc6ojyRzW+WqzT8VXybfAZ7/NXhcAxowJjw2KQgWRjfnw==}
+  '@jser/data-fetcher@2.0.1':
+    resolution: {integrity: sha512-uyQ4Q4WCS0TFjPihZAdQfAapHjfa4x96qXSk6DU7MCzJbThz/j2wxYzQtgQD8xMQAMo5IxA3zWSVLHxomy8qMQ==}
 
-  '@jser/stat@2.0.0':
-    resolution: {integrity: sha512-OMxvYHYs0rhtI06N5pInEmTAXPlI8Huxy2yViogmCYocLwlNtWHG89wE2exH1QNCP89332BwMWWK2NXTlmhD2g==}
+  '@jser/stat@2.0.1':
+    resolution: {integrity: sha512-lIz1rcVRrw73ss+suo0pJRq/0aXaqnX9sk0k62M4K/vQR0ESALBPzGijHHKiyIje1ZabYzET5uOVM1sb4tXJxw==}
 
   '@modelcontextprotocol/sdk@1.11.0':
     resolution: {integrity: sha512-k/1pb70eD638anoi0e8wUGAlbMJXyvdV4p62Ko+EZ7eBe1xMx8Uhak1R5DgfoofsK5IBBnRwsYGTaLZl+6/+RQ==}
@@ -329,8 +329,8 @@ packages:
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
 
-  '@types/node@22.15.11':
-    resolution: {integrity: sha512-rlyK0vuU7VLEYQfXuC7QTFxDvkb6tKhDI7wR4r6ZzM0k8BJd44W0jxo6xmUjqSs4AlYmiYfLJU2f0pAG/FtCRw==}
+  '@types/node@22.15.12':
+    resolution: {integrity: sha512-K0fpC/ZVeb8G9rm7bH7vI0KAec4XHEhBam616nVJCV51bKzJ6oA3luG4WdKoaztxe70QaNjS/xBmcDLmr4PiGw==}
 
   '@types/qs@6.9.18':
     resolution: {integrity: sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA==}
@@ -1165,9 +1165,9 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@jser/data-fetcher@2.0.0': {}
+  '@jser/data-fetcher@2.0.1': {}
 
-  '@jser/stat@2.0.0':
+  '@jser/stat@2.0.1':
     dependencies:
       binarysearch: 1.0.1
 
@@ -1249,17 +1249,17 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
 
   '@types/estree@1.0.7': {}
 
   '@types/express-serve-static-core@5.0.6':
     dependencies:
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
       '@types/qs': 6.9.18
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -1274,7 +1274,7 @@ snapshots:
 
   '@types/mime@1.3.5': {}
 
-  '@types/node@22.15.11':
+  '@types/node@22.15.12':
     dependencies:
       undici-types: 6.21.0
 
@@ -1285,12 +1285,12 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
       '@types/send': 0.17.4
 
   '@vitest/expect@3.1.3':
@@ -1300,13 +1300,13 @@ snapshots:
       chai: 5.2.0
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.1.3(vite@6.3.5(@types/node@22.15.11)(yaml@2.7.1))':
+  '@vitest/mocker@3.1.3(vite@6.3.5(@types/node@22.15.12)(yaml@2.7.1))':
     dependencies:
       '@vitest/spy': 3.1.3
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 6.3.5(@types/node@22.15.11)(yaml@2.7.1)
+      vite: 6.3.5(@types/node@22.15.12)(yaml@2.7.1)
 
   '@vitest/pretty-format@3.1.3':
     dependencies:
@@ -1964,13 +1964,13 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-node@3.1.3(@types/node@22.15.11)(yaml@2.7.1):
+  vite-node@3.1.3(@types/node@22.15.12)(yaml@2.7.1):
     dependencies:
       cac: 6.7.14
       debug: 4.4.0
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 6.3.5(@types/node@22.15.11)(yaml@2.7.1)
+      vite: 6.3.5(@types/node@22.15.12)(yaml@2.7.1)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -1985,7 +1985,7 @@ snapshots:
       - tsx
       - yaml
 
-  vite@6.3.5(@types/node@22.15.11)(yaml@2.7.1):
+  vite@6.3.5(@types/node@22.15.12)(yaml@2.7.1):
     dependencies:
       esbuild: 0.25.4
       fdir: 6.4.4(picomatch@4.0.2)
@@ -1994,14 +1994,14 @@ snapshots:
       rollup: 4.40.1
       tinyglobby: 0.2.13
     optionalDependencies:
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
       fsevents: 2.3.3
       yaml: 2.7.1
 
-  vitest@3.1.3(@types/node@22.15.11)(yaml@2.7.1):
+  vitest@3.1.3(@types/node@22.15.12)(yaml@2.7.1):
     dependencies:
       '@vitest/expect': 3.1.3
-      '@vitest/mocker': 3.1.3(vite@6.3.5(@types/node@22.15.11)(yaml@2.7.1))
+      '@vitest/mocker': 3.1.3(vite@6.3.5(@types/node@22.15.12)(yaml@2.7.1))
       '@vitest/pretty-format': 3.1.3
       '@vitest/runner': 3.1.3
       '@vitest/snapshot': 3.1.3
@@ -2018,11 +2018,11 @@ snapshots:
       tinyglobby: 0.2.13
       tinypool: 1.0.2
       tinyrainbow: 2.0.0
-      vite: 6.3.5(@types/node@22.15.11)(yaml@2.7.1)
-      vite-node: 3.1.3(@types/node@22.15.11)(yaml@2.7.1)
+      vite: 6.3.5(@types/node@22.15.12)(yaml@2.7.1)
+      vite-node: 3.1.3(@types/node@22.15.12)(yaml@2.7.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
-      '@types/node': 22.15.11
+      '@types/node': 22.15.12
     transitivePeerDependencies:
       - jiti
       - less
