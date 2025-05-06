@@ -17,6 +17,11 @@ Install with [npm](https://www.npmjs.com/package/@jser/mcp):
 
 ## Source
 
+データの取得は`@jser/data-fetcher`を利用する
+
+- データ取得の感覚は最後に実行してから1分経過したら再取得する
+- つまり1分間はキャッシュのデータを利用する
+
 検索には[DataSet](https://github.com/jser/dataset)を利用する
 
 ```markdown
