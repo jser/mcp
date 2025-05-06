@@ -5,17 +5,38 @@ A MCP Server for JSer.info
 - [Introduction - Model Context Protocol](https://modelcontextprotocol.io/introduction)
 - [modelcontextprotocol/typescript-sdk: The official Typescript SDK for Model Context Protocol servers and clients](https://github.com/modelcontextprotocol/typescript-sdk)
 
-## Install
-
-Install with [npm](https://www.npmjs.com/package/@jser/mcp):
-
-    npx @jser/mcp
-
 ## Usage
 
 ### VSCode MCP 拡張機能との使い方
 
-VSCodeでMCP拡張機能がインストールされている場合、以下の手順で@jser/mcpを利用できます：
+VSCodeでMCP拡張機能がインストールされている場合、以下のいずれかの方法でJSer.info MCPを利用できます：
+
+#### リモートサーバーを利用する場合（推奨）
+
+以下のいずれかの方法でリモートサーバーを追加できます：
+
+##### 方法1: コマンドラインから追加
+
+```bash
+code --add-mcp '{"name":"jser-info-mcp","url":"https://mcp.jser.info/mcp"}'
+```
+
+##### 方法2: settings.jsonに追加
+
+VSCodeのsettings.jsonに以下の設定を追加します：
+```json
+"mcp": {
+  "servers": {
+    "jser-info-mcp": {
+      "url": "https://mcp.jser.info/mcp"
+    }
+  }
+}
+```
+
+これで自動的にJSer.info MCPが利用可能になります。
+
+#### ローカルサーバーを利用する場合
 
 1. ターミナルで@jser/mcpを起動する
    ```bash
@@ -26,7 +47,9 @@ VSCodeでMCP拡張機能がインストールされている場合、以下の�
 
 3. サーバーURLに `http://localhost:3000/mcp` を入力して接続
 
-4. 接続後、以下のツールが利用可能になります：
+### 利用できる機能
+
+接続後、以下のツールが利用可能になります：
    - `jser_search_items`: タイトル、説明、URL、タグでアイテムを検索（複数キーワードでOR検索可能）
    - `jser_search_posts`: タイトル、説明、URL、タグで投稿を検索
    - `jser_product_name`: URLから製品名を取得
@@ -36,7 +59,9 @@ VSCodeでMCP拡張機能がインストールされている場合、以下の�
    - `jser_week_with_item_url`: アイテムを含むJSer週を取得
    - `jser_item_with_url`: URLからJSerアイテムを取得
 
-### API詳細
+### 利用できるtool
+
+JSer.info MCPでは、次の tool が利用できます。
 
 #### jser_search_items
 
@@ -49,6 +74,15 @@ VSCodeでMCP拡張機能がインストールされている場合、以下の�
 - `order`: ソート順序
   - `desc`: 新しい順（デフォルト）
   - `asc`: 古い順
+
+返り値:
+- アイテムの配列
+  - `title`: アイテムのタイトル
+  - `url`: アイテムのURL
+  - `content`: アイテムの説明文
+  - `tags`: タグの配列
+  - `date`: 登録日時
+  - `relatedLinks`: 関連リンクの配列
 
 #### jser_search_posts
 
@@ -64,6 +98,106 @@ VSCodeでMCP拡張機能がインストールされている場合、以下の�
 - `order`: ソート順序
   - `desc`: 新しい順/関連度高順（デフォルト）
   - `asc`: 古い順/関連度低順
+
+返り値:
+- 投稿の配列
+  - `title`: 投稿のタイトル
+  - `url`: 投稿のURL
+  - `content`: 投稿の内容
+  - `tags`: タグの配列
+  - `date`: 投稿日時
+
+
+#### jser_product_name
+
+URLから製品名を取得します。
+
+パラメータ:
+- `url`: 製品のURL（必須）
+
+返り値:
+- 製品情報のオブジェクト
+  - `name`: 製品名
+  - `url`: 製品のURL
+  - `releaseNoteProbability`: リリースノートである確率
+  - `releaseNoteVersion`: リリースノートのバージョン情報（該当する場合）
+  - `releaseNoteURL`: リリースノートのURL（該当する場合）
+
+#### jser_week
+
+番号からJSer週を取得します。
+
+パラメータ:
+- `number`: JSer週の番号（必須）
+
+返り値:
+- JSer週のオブジェクト
+  - `number`: JSer週の番号
+  - `startDate`: 開始日
+  - `endDate`: 終了日
+  - `items`: その週のアイテムリスト
+  - `posts`: その週の投稿リスト
+
+#### jser_weeks
+
+全てのJSer週を取得します。
+
+返り値:
+- JSer週オブジェクトの配列
+  - `number`: JSer週の番号
+  - `startDate`: 開始日
+  - `endDate`: 終了日
+  - `items`: その週のアイテムリスト
+  - `posts`: その週の投稿リスト
+
+#### jser_weeks_between
+
+指定した期間のJSer週を取得します。
+
+パラメータ:
+- `beginDate`: 期間の開始日（必須）
+- `endDate`: 期間の終了日（必須）
+
+返り値:
+- JSer週オブジェクトの配列
+  - `number`: JSer週の番号
+  - `startDate`: 開始日
+  - `endDate`: 終了日
+  - `items`: その週のアイテムリスト
+  - `posts`: その週の投稿リスト
+  - `itemsCount`: アイテム数
+  - `postsCount`: 投稿数
+
+#### jser_week_with_item_url
+
+指定したURLのアイテムを含むJSer週を取得します。
+
+パラメータ:
+- `item_url`: アイテムのURL（必須）
+
+返り値:
+- JSer週のオブジェクト
+  - `number`: JSer週の番号
+  - `startDate`: 開始日
+  - `endDate`: 終了日
+  - `items`: その週のアイテムリスト
+  - `posts`: その週の投稿リスト
+
+#### jser_item_with_url
+
+指定したURLのアイテムを取得します。
+
+パラメータ:
+- `url`: アイテムのURL（必須）
+
+返り値:
+- アイテムのオブジェクト
+  - `title`: タイトル
+  - `url`: URL
+  - `description`: 説明
+  - `tags`: タグの配列
+  - `date`: 日付
+  - `relatedLinks`: 関連リンクの配列
 
 ## Source
 
@@ -134,103 +268,6 @@ return JSerWeek contain the itemObject.
 return JSerItem match the `URL`.
 ```
 
-## Features
-
-- Tool Name: `jser_search_items`
-  - Title: Search items by title, description, url, and tags
-  - Description: Search items by title, description, url, and tags.スペースで区切られた複数のキーワードをOR検索します。
-  - Parameters:
-    - `query`: Search query
-    - `limit`: Number of results to return (default: 10)
-    - `offset`: Offset for pagination (default: 0)
-    - `sort`: Sort order (default: "relevance")
-    - `order`: Sort order (default: "desc")
-- Tool Name: `jser_search_posts`
-  - Title: Search posts by title, description, url, and tags
-  - Description: Search posts by title, description, url, and tags
-  - Parameters:
-    - `query`: Search query
-    - `limit`: Number of results to return (default: 10)
-    - `offset`: Offset for pagination (default: 0)
-    - `sort`: Sort order (default: "relevance")
-    - `order`: Sort order (default: "desc")
-- Tool Name: `jser_post_items`
-  - Title: Search post items by title, description, url, and tags
-  - Description: Search post items by title, description, url, and tags
-  - Parameters:
-    - `query`: Search query
-    - `limit`: Number of results to return (default: 10)
-    - `offset`: Offset for pagination (default: 0)
-    - `sort`: Sort order (default: "relevance")
-    - `order`: Sort order (default: "desc")
-- Tool Name: `jser_product_name`
-  - Title: Get product name by URL
-  - Description: Get product name by URL
-  - Parameters:
-    - `url`: URL of the product
-  - Returns:
-    - `name`: Name of the product
-    - `url`: URL of the product
-    - `releaseNoteProbability`: Probability of the product being a release note
-    - `releaseNoteVersion`: Version of the product
-    - `releaseNoteURL`: URL of the release note
-- Tool Name: `jser_week`
-  - Title: Get JSer week by number
-  - Description: Get JSer week by number
-  - Parameters:
-    - `number`: Number of the JSer week
-  - Returns:
-    - `number`: Number of the JSer week
-    - `startDate`: Start date of the JSer week
-    - `endDate`: End date of the JSer week
-    - `items`: List of items in the JSer week
-    - `posts`: List of posts in the JSer week
-- Tool Name: `jser_weeks`
-  - Title: Get all JSer weeks
-  - Description: Get all JSer weeks
-  - Returns:
-    - `number`: Number of the JSer week
-    - `startDate`: Start date of the JSer week
-    - `endDate`: End date of the JSer week
-    - `items`: List of items in the JSer week
-    - `posts`: List of posts in the JSer week
-- Tool Name: `jser_weeks_between`
-  - Title: Get JSer weeks between two dates
-  - Description: Get JSer weeks between two dates
-  - Parameters:
-    - `beginDate`: Start date of the range
-    - `endDate`: End date of the range
-  - Returns:
-    - `number`: Number of the JSer week
-    - `startDate`: Start date of the JSer week
-    - `endDate`: End date of the JSer week
-    - `items`: List of items in the JSer week
-    - `posts`: List of posts in the JSer week
-    - `itemsCount`: Number of items in the JSer week
-    - `postsCount`: Number of posts in the JSer week
-- Tool Name: `jser_week_with_item_url`
-  - Title: Get JSer week with item
-  - Description: Get JSer week with item
-  - Parameters:
-    - `item_url`: URL of the item
-  - Returns:
-    - `number`: Number of the JSer week
-    - `startDate`: Start date of the JSer week
-    - `endDate`: End date of the JSer week
-    - `items`: List of items in the JSer week
-    - `posts`: List of posts in the JSer week
-- Tool Name: `jser_item_with_url`
-  - Title: Get JSer item with URL
-  - Description: Get JSer item with URL
-  - Parameters:
-    - `url`: URL of the item
-  - Returns:
-    - `title`: Title of the item
-    - `url`: URL of the item
-    - `description`: Description of the item
-    - `tags`: Tags of the item
-    - `date`: Date of the item
-    - `relatedLinks`: Related links of the item
 
 ## Changelog
 
