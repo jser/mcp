@@ -2,13 +2,14 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 import express from "express";
 import { createJSerInfoMcpServer, type JSerInfoMcpServer } from "./mcp.js";
 
+const DEFAULT_PORT = process.env.PORT ? parseInt(process.env.PORT) : 14561;
 /**
  * サーバーを起動する関数
  * @param options サーバーの設定オプション
  * @returns サーバーインスタンスとクリーンアップ関数
  */
 export const runServer = async ({
-    port = 3000,
+    port = DEFAULT_PORT,
     mcpServer = createJSerInfoMcpServer()
 }: {
     port?: number;
