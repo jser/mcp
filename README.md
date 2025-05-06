@@ -45,7 +45,7 @@ VSCodeのsettings.jsonに以下の設定を追加します：
 
 2. VSCodeのコマンドパレットを開き（`Cmd+Shift+P` または `Ctrl+Shift+P`）、「MCP: Add Server...」を実行
 
-3. サーバーURLに `http://localhost:3000/mcp` を入力して接続
+3. サーバーURLに `http://localhost:14561/mcp` を入力して接続
 
 ### 利用できる機能
 
