@@ -13,7 +13,29 @@ Install with [npm](https://www.npmjs.com/package/@jser/mcp):
 
 ## Usage
 
-- [ ] VSCode MCP Command
+### VSCode MCP 拡張機能との使い方
+
+VSCodeでMCP拡張機能がインストールされている場合、以下の手順で@jser/mcpを利用できます：
+
+1. ターミナルで@jser/mcpを起動する
+   ```bash
+   npx @jser/mcp
+   ```
+
+2. VSCodeのコマンドパレットを開き（`Cmd+Shift+P` または `Ctrl+Shift+P`）、「MCP: Add Server...」を実行
+
+3. サーバーURLに `http://localhost:3000/mcp` を入力して接続
+
+4. 接続後、以下のツールが利用可能になります：
+   - `search_items`: タイトル、説明、URL、タグでアイテムを検索
+   - `search_posts`: タイトル、説明、URL、タグで投稿を検索
+   - `search_post_items`: タイトル、説明、URL、タグで投稿内のアイテムを検索
+   - `get_product_name`: URLから製品名を取得
+   - `get_jser_week`: 番号からJSer週を取得
+   - `get_jser_weeks`: すべてのJSer週を取得
+   - `get_jser_weeks_between`: 二つの日付の間のJSer週を取得
+   - `get_jser_week_with_item`: アイテムを含むJSer週を取得
+   - `get_jser_item_with_url`: URLからJSerアイテムを取得
 
 ## Source
 
@@ -86,7 +108,7 @@ return JSerItem match the `URL`.
 
 ## Features
 
-- Tool Nane: `search_items`
+- Tool Name: `search_items`
   - Title: Search items by title, description, url, and tags
   - Description: Search items by title, description, url, and tags
   - Parameters:

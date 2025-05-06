@@ -19,6 +19,9 @@
   "author": "azu",
   "main": "lib/mcp.js",
   "types": "lib/mcp.d.ts",
+  "bin": {
+    "jser-mcp": "./bin/mcp.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "test"
@@ -34,6 +37,8 @@
     "prepublishOnly": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
+    "start": "node lib/index.js",
+    "dev": "tsc -p . && node lib/index.js",
     "watch": "tsc -p . --watch",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\""
   },
@@ -63,7 +68,6 @@
     "@jser/data-fetcher": "^2.0.0",
     "@jser/stat": "^2.0.0",
     "@modelcontextprotocol/sdk": "^1.11.0",
-    "express": "^5.1.0",
     "zod": "^3.24.4"
   }
 }

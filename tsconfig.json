@@ -24,8 +24,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "src/**/*"
   ],
   "exclude": [
     ".git",
