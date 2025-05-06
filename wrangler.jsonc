@@ -10,6 +10,22 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "migrations": [
+    {
+      "new_sqlite_classes": [
+        "JSerInfoMCP"
+      ],
+      "tag": "v1"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "class_name": "JSerInfoMCP",
+        "name": "MCP_OBJECT"
+      }
+    ]
+  },
   "observability": {
     "enabled": true
   }
