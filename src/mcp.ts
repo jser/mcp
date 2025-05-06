@@ -75,7 +75,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     // ========= ツールの実装 =========
 
     mcpServer.tool(
-        "search_items",
+        "jser_search_items",
         "タイトル、説明、URL、タグでアイテムを検索します。スペースで区切られた複数のキーワードをOR検索します",
         {
             query: z.string().describe("検索クエリ。スペースで区切られた複数のキーワードをOR検索します"),
@@ -134,7 +134,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "search_posts",
+        "jser_search_posts",
         "タイトル、説明、URL、タグで投稿を検索します",
         {
             query: z.string().describe("検索クエリ"),
@@ -191,7 +191,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "get_product_name",
+        "jser_product_name",
         "URLから製品名を取得します",
         {
             url: z.string().url().describe("製品のURL")
@@ -240,7 +240,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "get_jser_week",
+        "jser_week",
         "番号からJSerWeekを取得します",
         {
             number: z.number().describe("JSerWeekの番号")
@@ -291,7 +291,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "get_jser_weeks_between",
+        "jser_weeks_between",
         "二つの日付の間のJSerWeekを取得します",
         {
             beginDate: z.string().describe("期間の開始日"),
@@ -358,7 +358,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "get_jser_week_with_item",
+        "jser_week_with_item_url",
         "アイテムを含むJSerWeekを取得します",
         {
             item_url: z.string().url().describe("アイテムのURL")
@@ -423,7 +423,7 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
     );
 
     mcpServer.tool(
-        "get_jser_item_with_url",
+        "jser_item_with_url",
         "URLからJSerアイテムを取得します",
         {
             url: z.string().url().describe("アイテムのURL")
@@ -471,6 +471,38 @@ export const createJSerInfoMcpServer = (options?: { items?: JserItem[]; posts?: 
             }
         }
     );
+
+    mcpServer.tool("jser_weeks", "全てのJSer週を取得します", {}, async () => {
+        try {
+            // データ取得
+            const items = await getDataWithCache("items", fetchItems);
+            const posts = await getDataWithCache("posts", fetchPosts);
+
+            // JSer週データの取得
+            const jserStats = new JSerStat(items, posts);
+            const jserWeeks = jserStats.getJSerWeeks();
+
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: JSON.stringify(jserWeeks, null, 2)
+                    }
+                ]
+            };
+        } catch (error) {
+            console.error("JSer週一覧取得中にエラーが発生しました:", error);
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: `JSer週一覧取得中にエラーが発生しました: ${String(error)}`
+                    }
+                ],
+                isError: true
+            };
+        }
+    });
 
     return mcpServer;
 };

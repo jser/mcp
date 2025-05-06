@@ -27,15 +27,14 @@ VSCodeでMCP拡張機能がインストールされている場合、以下の�
 3. サーバーURLに `http://localhost:3000/mcp` を入力して接続
 
 4. 接続後、以下のツールが利用可能になります：
-   - `search_items`: タイトル、説明、URL、タグでアイテムを検索
-   - `search_posts`: タイトル、説明、URL、タグで投稿を検索
-   - `search_post_items`: タイトル、説明、URL、タグで投稿内のアイテムを検索
-   - `get_product_name`: URLから製品名を取得
-   - `get_jser_week`: 番号からJSer週を取得
-   - `get_jser_weeks`: すべてのJSer週を取得
-   - `get_jser_weeks_between`: 二つの日付の間のJSer週を取得
-   - `get_jser_week_with_item`: アイテムを含むJSer週を取得
-   - `get_jser_item_with_url`: URLからJSerアイテムを取得
+   - `jser_search_items`: タイトル、説明、URL、タグでアイテムを検索（複数キーワードでOR検索可能）
+   - `jser_search_posts`: タイトル、説明、URL、タグで投稿を検索
+   - `jser_product_name`: URLから製品名を取得
+   - `jser_week`: 番号からJSer週を取得
+   - `jser_weeks`: 全てのJSer週を取得
+   - `jser_weeks_between`: 二つの日付の間のJSer週を取得
+   - `jser_week_with_item_url`: アイテムを含むJSer週を取得
+   - `jser_item_with_url`: URLからJSerアイテムを取得
 
 ## Source
 
@@ -108,7 +107,7 @@ return JSerItem match the `URL`.
 
 ## Features
 
-- Tool Name: `search_items`
+- Tool Name: `jser_search_items`
   - Title: Search items by title, description, url, and tags
   - Description: Search items by title, description, url, and tags.スペースで区切られた複数のキーワードをOR検索します。
   - Parameters:
@@ -117,7 +116,7 @@ return JSerItem match the `URL`.
     - `offset`: Offset for pagination (default: 0)
     - `sort`: Sort order (default: "relevance")
     - `order`: Sort order (default: "desc")
-- Tool Name: `search_posts`
+- Tool Name: `jser_search_posts`
   - Title: Search posts by title, description, url, and tags
   - Description: Search posts by title, description, url, and tags
   - Parameters:
@@ -126,7 +125,7 @@ return JSerItem match the `URL`.
     - `offset`: Offset for pagination (default: 0)
     - `sort`: Sort order (default: "relevance")
     - `order`: Sort order (default: "desc")
-- Tool Name: `search_post_items`
+- Tool Name: `jser_post_items`
   - Title: Search post items by title, description, url, and tags
   - Description: Search post items by title, description, url, and tags
   - Parameters:
@@ -135,7 +134,7 @@ return JSerItem match the `URL`.
     - `offset`: Offset for pagination (default: 0)
     - `sort`: Sort order (default: "relevance")
     - `order`: Sort order (default: "desc")
-- Tool Name: `get_product_name`
+- Tool Name: `jser_product_name`
   - Title: Get product name by URL
   - Description: Get product name by URL
   - Parameters:
@@ -146,7 +145,7 @@ return JSerItem match the `URL`.
     - `releaseNoteProbability`: Probability of the product being a release note
     - `releaseNoteVersion`: Version of the product
     - `releaseNoteURL`: URL of the release note
-- Tool Name: `get_jser_week`
+- Tool Name: `jser_week`
   - Title: Get JSer week by number
   - Description: Get JSer week by number
   - Parameters:
@@ -157,7 +156,7 @@ return JSerItem match the `URL`.
     - `endDate`: End date of the JSer week
     - `items`: List of items in the JSer week
     - `posts`: List of posts in the JSer week
-- Tool Name: `get_jser_weeks`
+- Tool Name: `jser_weeks`
   - Title: Get all JSer weeks
   - Description: Get all JSer weeks
   - Returns:
@@ -166,7 +165,7 @@ return JSerItem match the `URL`.
     - `endDate`: End date of the JSer week
     - `items`: List of items in the JSer week
     - `posts`: List of posts in the JSer week
-- Tool Name: `get_jser_weeks_between`
+- Tool Name: `jser_weeks_between`
   - Title: Get JSer weeks between two dates
   - Description: Get JSer weeks between two dates
   - Parameters:
@@ -180,7 +179,7 @@ return JSerItem match the `URL`.
     - `posts`: List of posts in the JSer week
     - `itemsCount`: Number of items in the JSer week
     - `postsCount`: Number of posts in the JSer week
-- Tool Name: `get_jser_week_with_item`
+- Tool Name: `jser_week_with_item_url`
   - Title: Get JSer week with item
   - Description: Get JSer week with item
   - Parameters:
@@ -191,7 +190,7 @@ return JSerItem match the `URL`.
     - `endDate`: End date of the JSer week
     - `items`: List of items in the JSer week
     - `posts`: List of posts in the JSer week
-- Tool Name: `get_jser_item_with_url`
+- Tool Name: `jser_item_with_url`
   - Title: Get JSer item with URL
   - Description: Get JSer item with URL
   - Parameters:

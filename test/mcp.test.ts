@@ -45,7 +45,7 @@ describe("JSer.info MCP Server", () => {
             const client = await createConnection(url);
             // search_itemsを呼び出す
             const response = await client.callTool({
-                name: "search_items",
+                name: "jser_search_items",
                 arguments: {
                     query: "Test",
                     limit: 2,
@@ -86,7 +86,7 @@ describe("JSer.info MCP Server", () => {
         try {
             const client = await createConnection(url);
             const response = await client.callTool({
-                name: "search_posts",
+                name: "jser_search_posts",
                 arguments: {
                     query: "Test",
                     limit: 10,
@@ -256,7 +256,7 @@ describe("JSer.info MCP Server", () => {
         try {
             const client = await createConnection(url);
             const response = await client.callTool({
-                name: "get_jser_weeks_between",
+                name: "jser_weeks_between",
                 arguments: {
                     beginDate: "2014-01-01",
                     endDate: "2014-01-08"
@@ -322,7 +322,7 @@ describe("JSer.info MCP Server", () => {
         try {
             const client = await createConnection(url);
             const response = await client.callTool({
-                name: "get_jser_week_with_item",
+                name: "jser_week_with_item_url",
                 arguments: {
                     // @ts-expect-error -- ある
                     item_url: mockItems[50].url
@@ -368,7 +368,7 @@ describe("JSer.info MCP Server", () => {
         try {
             const client = await createConnection(url);
             const response = await client.callTool({
-                name: "get_jser_item_with_url",
+                name: "jser_item_with_url",
                 arguments: {
                     url: "https://efendibooks.com/minibooks/testing-with-coffeescript"
                 }
@@ -400,7 +400,7 @@ describe("JSer.info MCP Server", () => {
         try {
             const client = await createConnection(url);
             const response = await client.callTool({
-                name: "get_product_name",
+                name: "jser_product_name",
                 arguments: {
                     url: "https://deno.com/blog/add-jsr-with-pnpm-yarn"
                 }
