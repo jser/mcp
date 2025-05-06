@@ -7,9 +7,9 @@ A MCP Server for JSer.info
 
 ## Usage
 
-### VSCode MCP 拡張機能との使い方
+### VSCodeでの使い方
 
-VSCodeでMCP拡張機能がインストールされている場合、以下のいずれかの方法でJSer.info MCPを利用できます：
+VSCodeでは、次のいずれかの方法でJSer.info MCPを利用できます：
 
 #### リモートサーバーを利用する場合（推奨）
 
