@@ -1,6 +1,6 @@
 # @jser/mcp
 
-A MCP Server for JSer.info
+An MCP Server for JSer.info
 
 - [Introduction - Model Context Protocol](https://modelcontextprotocol.io/introduction)
 - [modelcontextprotocol/typescript-sdk: The official Typescript SDK for Model Context Protocol servers and clients](https://github.com/modelcontextprotocol/typescript-sdk)
